@@ -25,7 +25,7 @@ public class Lab{
 			for(i = 0; i<1000000; i++){
 				System.out.println(line);
 			}
-			System.out.println("Elapsed time: "+Long.toString(elapsedTime));
+			System.out.println("Elapsed time: "+Long.toString(elapsedTime) +"ms");
 		}
 		catch(Exception e)
 		{
@@ -38,10 +38,7 @@ public class Lab{
 		boolean swapped = true;
 		int j = 0;
 		int tmp;
-		int it = 0;
 		while (swapped) {
-			it++;
-			System.out.println("Iteracion: "+Integer.toString(it));
 			swapped = false;
 			j++;
 			for (int i = 0; i < arr.length - j; i++) {
