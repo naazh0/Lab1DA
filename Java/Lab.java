@@ -23,7 +23,7 @@ public class Lab{
       		long elapsedTime = stopTime - startTime;
       		
 			for(i = 0; i<1000000; i++){
-				System.out.println(line);
+				System.out.println(numeros[i]);
 			}
 			System.out.println("Elapsed time: "+Long.toString(elapsedTime) +"ms");
 		}
