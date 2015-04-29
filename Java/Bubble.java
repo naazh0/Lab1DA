@@ -1,28 +1,27 @@
 import java.io.*;
 import java.util.*;
 
-public class Lab{
+public class Bubble{
 	public static void main(String []args) {
-		int[] numeros = new int[1000000];
+		int[] numeros = new int[9];
 		try
 		{
 			int i = 0;
-			BufferedReader reader = new BufferedReader(new FileReader("desordenado.in"));
+			BufferedReader reader = new BufferedReader(new FileReader("num.in"));
 			String line;
 			while ((line = reader.readLine()) != null)
 			{
 				numeros[i] = Integer.parseInt(line);
-				//System.out.println(line);
 				i++;
 			}
 			reader.close();
 			System.out.println("Ordenar ahora...");
 			long startTime = System.currentTimeMillis();
-			Lab.bubbleSort(numeros);
+			Bubble.bubbleSort(numeros);
 			long stopTime = System.currentTimeMillis();
       		long elapsedTime = stopTime - startTime;
       		
-			for(i = 0; i<1000000; i++){
+			for(i = 0; i<9; i++){
 				System.out.println(numeros[i]);
 			}
 			System.out.println("Elapsed time: "+Long.toString(elapsedTime) +"ms");
