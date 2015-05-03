@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-
+//http://en.wikibooks.org/wiki/Algorithm_Implementation/Sorting/Bubble_sort#Java
 public class Bubble{
 	public static void main(String []args) {
 		int[] numeros = new int[9];
@@ -33,21 +33,19 @@ public class Bubble{
 		}
 
 	}
-	public static void bubbleSort(int[] arr) {
+	public static int[] bubbleSort(int[] numbers) {
 		boolean swapped = true;
-		int j = 0;
-		int tmp;
-		while (swapped) {
+		for(int i = numbers.length - 1; i > 0 && swapped; i--){
 			swapped = false;
-			j++;
-			for (int i = 0; i < arr.length - j; i++) {
-				if (arr[i] > arr[i + 1]) {                          
-					tmp = arr[i];
-					arr[i] = arr[i + 1];
-					arr[i + 1] = tmp;
+			for (int j = 0; j < i; j++){
+				if (numbers[j] > numbers[j+1]){
+					int temp = numbers[j];
+					numbers[j] = numbers[j+1];
+					numbers[j+1] = temp;
 					swapped = true;
 				}
-			}                
+			}
 		}
-	}	
+		return numbers;
+	}
 }

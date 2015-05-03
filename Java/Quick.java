@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-
+//http://www.mycstutorials.com/articles/sorting/quicksort
 public class Quick{
 	public static void main(String []args) {
 		int[] numeros = new int[9];

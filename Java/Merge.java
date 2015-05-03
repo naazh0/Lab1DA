@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-
+//http://en.wikibooks.org/wiki/Algorithm_Implementation/Sorting/Merge_sort#Java
 public class Merge{
 	public static void main(String []args) {
 		int[] numeros = new int[9];
