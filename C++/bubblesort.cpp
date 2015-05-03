@@ -3,7 +3,8 @@
 #include <cstdlib>
 #include <time.h>
 using namespace std;
-
+//http://www.cplusplus.com/reference/ctime/difftime/
+//http://www.algolist.net/Algorithms/Sorting/Bubble_sort
 void bubbleSort(int arr[], int n){
 	bool swapped = true;
 	int j = 0;

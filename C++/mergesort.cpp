@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <time.h>
 using namespace std;
-
+//http://en.wikibooks.org/wiki/Algorithm_Implementation/Sorting/Merge_sort
 void merge(int a[], const int low, const int mid, const int high){
 	int * b = new int[high+1-low];
 	int h,i,j,k;
