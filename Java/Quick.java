@@ -1,13 +1,13 @@
 import java.io.*;
 import java.util.*;
-//http://www.mycstutorials.com/articles/sorting/quicksort
+//0,235 seconds
 public class Quick{
 	public static void main(String []args) {
-		int[] numeros = new int[9];
+		int[] numeros = new int[1000000];
 		try
 		{
 			int i = 0;
-			BufferedReader reader = new BufferedReader(new FileReader("num.in"));
+			BufferedReader reader = new BufferedReader(new FileReader("mayorMenor.in"));
 			String line;
 			while ((line = reader.readLine()) != null)
 			{
@@ -19,12 +19,13 @@ public class Quick{
 			long startTime = System.currentTimeMillis();
 			Quick.quickSort(numeros);
 			long stopTime = System.currentTimeMillis();
-      		long elapsedTime = stopTime - startTime;
-      		
-			for(i = 0; i<9; i++){
-				System.out.println(numeros[i]);
+      		long elapsedTime = (stopTime - startTime);
+      		PrintWriter writer = new PrintWriter("Quick_Sort_mayorMenor.out", "UTF-8");
+			for(i = 0; i<1000000; i++){
+				writer.println(numeros[i]);
 			}
 			System.out.println("Elapsed time: "+Long.toString(elapsedTime) +"ms");
+			writer.close();
 		}
 		catch(Exception e)
 		{
@@ -34,11 +35,11 @@ public class Quick{
 
 	}
 	public static void quickSort(int array[]) {
-		quickSort(array, 0, array.length - 1);
+		quick_Sort(array, 0, array.length - 1);
 	}
 
 
-	public static void quickSort(int array[], int start, int end){
+	public static void quick_Sort(int array[], int start, int end){
 		int i = start;
 		int k = end;
 		if (end - start >= 1){
@@ -52,8 +53,8 @@ public class Quick{
 					swap(array, i, k);
 			}
 			swap(array, start, k);
-			quickSort(array, start, k - 1);
-			quickSort(array, k + 1, end);
+			quick_Sort(array, start, k - 1);
+			quick_Sort(array, k + 1, end);
 		}
 		else
 		{

@@ -3,7 +3,9 @@
 #include <cstdlib>
 #include <time.h>
 using namespace std;
-//http://en.wikibooks.org/wiki/Algorithm_Implementation/Sorting/Merge_sort/
+//0,558663 seconds desordenado
+//0,412632 seconds mayorMenor
+//0,411407 seconds menorMayor
 void merge(int a[], const int low, const int mid, const int high){
 	int * b = new int[high+1-low];
 	int h,i,j,k;
@@ -49,29 +51,18 @@ void merge_sort( int a[], const int low, const int high ){
 	}
 }
 
-
-int main(){
-	string line;
-	int i = 0;
-	int numeros[15];
-	ifstream myfile ("num.in");
-	if (myfile.is_open()){
-		while ( getline (myfile,line) ){
-			numeros[i] = atoi(line.c_str());
-			i++;
-		}
-	time_t startTime, endTime;
-	startTime = clock();
-	merge_sort(numeros, 0, 15);
-	endTime = clock();
-	int timeDiff = (int)(difftime(endTime, startTime) * 10.0);
-	for(i = 0; i < 15 ; i++){
-		cout << numeros[i] << '\n';
+void runMerge(int array[], int low, int high, char nombre[]){
+	float startTime, endTime;
+	startTime = ((float)clock())/CLOCKS_PER_SEC;
+	merge_sort(array, low, high);
+	endTime = ((float)clock())/CLOCKS_PER_SEC;
+	float timeDiff = endTime-startTime;
+	cout << "The merge-sort algorithm took approximately " << timeDiff << " seconds to execute." << endl;
+	ofstream myfile2 (nombre);
+	for(int i = 0; i < 1000000 ; i++){
+		if (myfile2.is_open()){
+   			myfile2 << array[i] << '\n';
+    	}
 	}
-	cout << "The merge-sort algorithm took approximately " << timeDiff << " ms to execute." << endl;
-	myfile.close();
-	}
-	else
-		cout << "Unable to open file"; 
-	return 0;
+	myfile2.close();
 }

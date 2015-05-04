@@ -3,10 +3,11 @@
 #include <cstdlib>
 #include <time.h>
 using namespace std;
-
-//http://www.sanfoundry.com/cpluscplus-program-implement-bucket-sort
+//0,080901 seconds desordenado
+//0,022361 seconds mayor menor
+//0,021846 seconds menor mayor
 void bucketSort (int arr[], int n){
-	int m = 16;
+	int m = 1000001;
 	int buckets[m];
 	for (int i = 0; i < m; ++i)
 		buckets[i] = 0;
@@ -17,28 +18,18 @@ void bucketSort (int arr[], int n){
 			arr[i++] = j;
 }
 
-int main(){
-	string line;
-	int i = 0;
-	int numeros[15];
-	ifstream myfile ("num.in");
-	if (myfile.is_open()){
-		while ( getline (myfile,line) ){
-			numeros[i] = atoi(line.c_str());
-			i++;
-		}
-	time_t startTime, endTime;
-	startTime = clock();
-	bucketSort(numeros, 15);
-	endTime = clock();
-	int timeDiff = (int)(difftime(endTime, startTime) * 10.0);
-	for(i = 0; i < 15 ; i++){
-		cout << numeros[i] << '\n';
+void runBucket(int array[], int n, char nombre[]){
+	float startTime, endTime;
+	startTime = ((float)clock())/CLOCKS_PER_SEC;
+	bucketSort(array, n);
+	endTime = ((float)clock())/CLOCKS_PER_SEC;
+	float timeDiff = endTime-startTime;
+	cout << "The bucket-sort algorithm took approximately " << timeDiff << " seconds to execute." << endl;
+	ofstream myfile2(nombre);
+	for(int i = 0; i < 1000000 ; i++){
+		if (myfile2.is_open()){
+   			myfile2 << array[i] << '\n';
+    	}
 	}
-	cout << "The bucket-sort algorithm took approximately " << timeDiff << " ms to execute." << endl;
-	myfile.close();
-	}
-	else
-		cout << "Unable to open file"; 
-	return 0;
+	myfile2.close();
 }

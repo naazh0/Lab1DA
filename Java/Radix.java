@@ -1,13 +1,15 @@
 import java.io.*;
 import java.util.*;
-
+//0,196 seconds desordenado
+//0,219 seconds mayorMenor
+//0,252 seconds menorMayor
 public class Radix{
 	public static void main(String []args) {
-		int[] numeros = new int[9];
+		int[] numeros = new int[1000000];
 		try
 		{
 			int i = 0;
-			BufferedReader reader = new BufferedReader(new FileReader("num.in"));
+			BufferedReader reader = new BufferedReader(new FileReader("menorMayor.in"));
 			String line;
 			while ((line = reader.readLine()) != null)
 			{
@@ -20,11 +22,12 @@ public class Radix{
 			Radix.radixSort(numeros);
 			long stopTime = System.currentTimeMillis();
       		long elapsedTime = stopTime - startTime;
-      		
-			for(i = 0; i<9; i++){
-				System.out.println(numeros[i]);
+      		PrintWriter writer = new PrintWriter("Radix_Sort_menorMayor.out", "UTF-8");			
+			for(i = 0; i<1000000; i++){
+				writer.println(numeros[i]);
 			}
 			System.out.println("Elapsed time: "+Long.toString(elapsedTime) +"ms");
+			writer.close();
 		}
 		catch(Exception e)
 		{
@@ -35,7 +38,7 @@ public class Radix{
 	public static void radixSort( int[] a)
 	{
 		int i, m = a[0], exp = 1, n = a.length;
-		int[] b = new int[10];
+		int[] b = new int[1000001];
 		for (i = 1; i < n; i++)
 			if (a[i] > m)
 				m = a[i];
@@ -54,5 +57,3 @@ public class Radix{
 		}
 	}    		
 }
-
-// http://www.sanfoundry.com/java-program-implement-radix-sort/

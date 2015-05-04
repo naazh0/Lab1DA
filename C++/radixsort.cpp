@@ -3,7 +3,9 @@
 #include <cstdlib>
 #include <time.h>
 using namespace std;
-//http://www.sanfoundry.com/cpp-program-implement-radix-sort
+// 0.339637 seconds desordenado
+// 0.392636 seconds mayor menor
+// 0.393043 seconds menor mayor
 int getMax(int arr[], int n){
 	int max = arr[0];
 	for (int i = 1; i < n; i++)
@@ -34,29 +36,18 @@ void radixsort(int arr[], int n){
 		countSort(arr, n, exp);
 }
 
-
-int main(){
-	string line;
-	int i = 0;
-	int numeros[15];
-	ifstream myfile ("num.in");
-	if (myfile.is_open()){
-		while ( getline (myfile,line) ){
-			numeros[i] = atoi(line.c_str());
-			i++;
-		}
-	time_t startTime, endTime;
-	startTime = clock();
-	radixsort(numeros, 15);
-	endTime = clock();
-	int timeDiff = (int)(difftime(endTime, startTime) * 10.0);
-	for(i = 0; i < 15 ; i++){
-		cout << numeros[i] << '\n';
+void runRadix(int array[], int n, char nombre[]){
+	float startTime, endTime;
+	startTime = ((float)clock())/CLOCKS_PER_SEC;
+	radixsort(array, n);
+	endTime = ((float)clock())/CLOCKS_PER_SEC;
+	float timeDiff = endTime-startTime;
+	cout << "The radix-sort algorithm took approximately " << timeDiff << " seconds to execute." << endl;
+	ofstream myfile2 (nombre);
+	for(int i = 0; i < 1000000 ; i++){
+		if (myfile2.is_open()){
+   			myfile2 << array[i] << '\n';
+    	}
 	}
-	cout << "The radix-sort algorithm took approximately " << timeDiff << " ms to execute." << endl;
-	myfile.close();
-	}
-	else
-		cout << "Unable to open file"; 
-	return 0;
+	myfile2.close();
 }

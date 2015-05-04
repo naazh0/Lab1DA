@@ -3,8 +3,9 @@
 #include <cstdlib>
 #include <time.h>
 using namespace std;
-//http://www.cplusplus.com/reference/ctime/difftime/
-//http://www.algolist.net/Algorithms/Sorting/Bubble_sort/
+//738,66 segundos desordenado
+//206,8 segundos mayorMenor
+//0.005455  segundos menorMayor
 void bubbleSort(int arr[], int n){
 	bool swapped = true;
 	int j = 0;
@@ -23,29 +24,18 @@ void bubbleSort(int arr[], int n){
 	}
 }
 
-
-int main(){
-	string line;
-	int i = 0;
-	int numeros[15];
-	ifstream myfile ("num.in");
-	if (myfile.is_open()){
-		while ( getline (myfile,line) ){
-			numeros[i] = atoi(line.c_str());
-			i++;
-		}
-	time_t startTime, endTime;
-	startTime = clock();
-	bubbleSort(numeros, 15);
-	endTime = clock();
-	int timeDiff = (int)(difftime(endTime, startTime) * 10.0);
-	for(i = 0; i < 15 ; i++){
-		cout << numeros[i] << '\n';
+void runBubble(int array[], int n, char nombre[]){
+	float startTime, endTime;
+	startTime = ((float)clock())/CLOCKS_PER_SEC;
+	bubbleSort(array, n);
+	endTime = ((float)clock())/CLOCKS_PER_SEC;
+	float timeDiff = endTime-startTime;
+	cout << "The bubble-sort algorithm took approximately " << timeDiff << " seconds to execute." << endl;
+	ofstream myfile2 (nombre);
+	for(int i = 0; i < 1000000 ; i++){
+		if (myfile2.is_open()){
+   			myfile2 << array[i] << '\n';
+    	}
 	}
-	cout << "The bubble-sort algorithm took approximately " << timeDiff << " ms to execute." << endl;
-	myfile.close();
-	}
-	else
-		cout << "Unable to open file"; 
-	return 0;
+	myfile2.close();
 }

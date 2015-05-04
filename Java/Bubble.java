@@ -1,13 +1,15 @@
 import java.io.*;
 import java.util.*;
-//http://en.wikibooks.org/wiki/Algorithm_Implementation/Sorting/Bubble_sort#Java
+// 3985708ms
+// 9ms menorMayor
+//
 public class Bubble{
 	public static void main(String []args) {
-		int[] numeros = new int[9];
+		int[] numeros = new int[1000000];
 		try
 		{
 			int i = 0;
-			BufferedReader reader = new BufferedReader(new FileReader("num.in"));
+			BufferedReader reader = new BufferedReader(new FileReader("mayorMenor.in"));
 			String line;
 			while ((line = reader.readLine()) != null)
 			{
@@ -20,11 +22,12 @@ public class Bubble{
 			Bubble.bubbleSort(numeros);
 			long stopTime = System.currentTimeMillis();
       		long elapsedTime = stopTime - startTime;
-      		
-			for(i = 0; i<9; i++){
-				System.out.println(numeros[i]);
+      		PrintWriter writer = new PrintWriter("Bubble_Sort_mayorMenor", "UTF-8");
+			for(i = 0; i<1000000; i++){
+				writer.println(numeros[i]);
 			}
 			System.out.println("Elapsed time: "+Long.toString(elapsedTime) +"ms");
+			writer.close();
 		}
 		catch(Exception e)
 		{

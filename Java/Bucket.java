@@ -1,13 +1,15 @@
 import java.io.*;
 import java.util.*;
-//http://www.javacodex.com/Sorting/Bucket-Sort
+//0,075 seconds desordenado
+//0,046 seconds menorMayor
+//0,049 seconds mayorMenor
 public class Bucket{
 	public static void main(String []args) {
-		int[] numeros = new int[9];
+		int[] numeros = new int[1000000];
 		try
 		{
 			int i = 0;
-			BufferedReader reader = new BufferedReader(new FileReader("num.in"));
+			BufferedReader reader = new BufferedReader(new FileReader("mayorMenor.in"));
 			String line;
 			while ((line = reader.readLine()) != null)
 			{
@@ -17,14 +19,15 @@ public class Bucket{
 			reader.close();
 			System.out.println("Ordenar ahora...");
 			long startTime = System.currentTimeMillis();
-			Bucket.bucketSort(numeros, 9);
+			Bucket.bucketSort(numeros, 1000000);
 			long stopTime = System.currentTimeMillis();
       		long elapsedTime = stopTime - startTime;
-      		
-			for(i = 0; i<9; i++){
-				System.out.println(numeros[i]);
+      		PrintWriter writer = new PrintWriter("Bucket_Sort_mayorMenor.out", "UTF-8");
+			for(i = 0; i<1000000; i++){
+				writer.println(numeros[i]);
 			}
 			System.out.println("Elapsed time: "+Long.toString(elapsedTime) +"ms");
+			writer.close();
 		}
 		catch(Exception e)
 		{
