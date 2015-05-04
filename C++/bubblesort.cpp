@@ -3,8 +3,8 @@
 #include <cstdlib>
 #include <time.h>
 using namespace std;
-//738,66 segundos desordenado
-//206,8 segundos mayorMenor
+//5865,06 segundos desordenado
+//6764.06 segundos mayorMenor
 //0.005455  segundos menorMayor
 void bubbleSort(int arr[], int n){
 	bool swapped = true;

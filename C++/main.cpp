@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <time.h>
+#include <cstdio>
 #include "bubblesort.h"
 #include "mergesort.h"
 #include "quicksort.h"
@@ -20,9 +21,10 @@ int main(){
 	string line;
 	int i = 0;
 	int arr[1000000], original[1000000];
+	cout << "Algoritmos para menorMayor.in\n";
 	ifstream myfile("menorMayor.in");
 	if (myfile.is_open()){
-		while ( getline (myfile,line) ){
+		while ( getline (myfile,line) && i < 1000000){
 			arr[i] = atoi(line.c_str());
 			i++;
 		}
@@ -38,14 +40,15 @@ int main(){
 	runRadix(arr, 1000000, "radix_sort_menorMayor.out");
 	}
 	myfile.close();
-
+	i = 0;
+	cout << "Algoritmos para mayorMenor.in\n";
 	ifstream myfile2("mayorMenor.in");
 	if (myfile2.is_open()){
-		while ( getline (myfile2,line) ){
+		while ( getline (myfile2,line) && i < 1000000){
 			arr[i] = atoi(line.c_str());
 			i++;
 		}
-	copiarArray(original, arr, 1000000);
+	copiarArray(arr, original, 1000000);
 	runBubble(arr, 1000000, "bubble_sort_mayorMenor.out");
 	copiarArray(original, arr, 1000000);
 	runMerge(arr, 1, 1000000, "merge_sort_mayorMenor.out");
@@ -58,12 +61,14 @@ int main(){
 	}
 	myfile2.close();
 	ifstream myfile3("desordenado.in");
+	i = 0;
+	cout << "Algoritmos para desordenado.in\n";
 	if (myfile3.is_open()){
-		while ( getline (myfile3,line) ){
+		while ( getline (myfile3,line) && i < 1000000){
 			arr[i] = atoi(line.c_str());
 			i++;
 		}
-	copiarArray(original, arr, 1000000);
+	copiarArray(arr, original, 1000000);
 	runBubble(arr, 1000000, "bubble_sort_desordenado.out");
 	copiarArray(original, arr, 1000000);
 	runMerge(arr, 0, 999999, "merge_sort_desordenado.out");
