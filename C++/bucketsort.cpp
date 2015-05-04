@@ -8,7 +8,7 @@ using namespace std;
 //0,021846 seconds menor mayor
 void bucketSort (int arr[], int n){
 	int m = 1000001;
-	int buckets[m];
+	int* buckets = new int[m];
 	for (int i = 0; i < m; ++i)
 		buckets[i] = 0;
 	for (int i = 0; i < n; ++i)
@@ -16,9 +16,10 @@ void bucketSort (int arr[], int n){
 	for (int i = 0, j = 0; j < m; ++j)
 		for (int k = buckets[j]; k > 0; --k)
 			arr[i++] = j;
+	delete[] buckets;
 }
 
-void runBucket(int array[], int n, char nombre[]){
+void runBucket(int array[], int n, const char nombre[]){
 	float startTime, endTime;
 	startTime = ((float)clock())/CLOCKS_PER_SEC;
 	bucketSort(array, n);

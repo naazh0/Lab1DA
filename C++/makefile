@@ -5,7 +5,7 @@ CFLAGS		= -g -Wall
 
 all: main
 
-main: bubblesort.o mergesort.o quicksort.o radixsort.o bucketsort.o main.o
+main: main.o bubblesort.o mergesort.o quicksort.o radixsort.o bucketsort.o 
 	$(CC) $(CFLAGS) -o $@ $^
 
 bubblesort.o: bubblesort.h

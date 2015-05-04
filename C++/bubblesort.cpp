@@ -24,7 +24,7 @@ void bubbleSort(int arr[], int n){
 	}
 }
 
-void runBubble(int array[], int n, char nombre[]){
+void runBubble(int array[], int n, const char nombre[]){
 	float startTime, endTime;
 	startTime = ((float)clock())/CLOCKS_PER_SEC;
 	bubbleSort(array, n);

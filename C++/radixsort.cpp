@@ -15,7 +15,7 @@ int getMax(int arr[], int n){
 }
 
 void countSort(int arr[], int n, int exp){
-	int output[n];
+	int* output = new int[n];
 	int i, count[10] = {0};
 	for (i = 0; i < n; i++)
 		count[(arr[i] / exp) % 10]++;
@@ -27,6 +27,7 @@ void countSort(int arr[], int n, int exp){
 	}
 	for (i = 0; i < n; i++)
 		arr[i] = output[i];
+	delete[] output;
 }
 
 
@@ -36,7 +37,7 @@ void radixsort(int arr[], int n){
 		countSort(arr, n, exp);
 }
 
-void runRadix(int array[], int n, char nombre[]){
+void runRadix(int array[], int n, const char nombre[]){
 	float startTime, endTime;
 	startTime = ((float)clock())/CLOCKS_PER_SEC;
 	radixsort(array, n);

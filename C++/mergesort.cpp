@@ -51,7 +51,7 @@ void merge_sort( int a[], const int low, const int high ){
 	}
 }
 
-void runMerge(int array[], int low, int high, char nombre[]){
+void runMerge(int array[], int low, int high, const char nombre[]){
 	float startTime, endTime;
 	startTime = ((float)clock())/CLOCKS_PER_SEC;
 	merge_sort(array, low, high);

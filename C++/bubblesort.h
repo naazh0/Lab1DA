@@ -1,2 +1,2 @@
 void bubbleSort(int arr[], int n);
-void runBubble(int array[], int n, char nombre[]);
+void runBubble(int array[], int n, const char nombre[]);

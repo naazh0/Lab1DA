@@ -29,7 +29,7 @@ void quickSort(int arr[], int left, int right){
 		quickSort(arr, i, right);
 }
 
-void runQuick(int array[], int left, int right, char nombre[]){
+void runQuick(int array[], int left, int right, const char nombre[]){
 	float startTime, endTime;
 	startTime = ((float)clock())/CLOCKS_PER_SEC;
 	quickSort(array, left, right);
